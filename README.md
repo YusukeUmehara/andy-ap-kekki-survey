@@ -1,5 +1,16 @@
 # ＆Y 11月 AP決起アンケート
 
+## 🔗 公開済み（2026-11-02）
+| もの | URL |
+|---|---|
+| **回答ページ（これを配る）** | https://yusukeumehara.github.io/andy-ap-kekki-survey/ |
+| 回答スプレッドシート | https://docs.google.com/spreadsheets/d/16hxjRVQ6cIp4v5Azy-U2idolH9sna0wzNDo0bWTn-mY/edit |
+| 送信の受け口（GAS ウェブアプリ） | https://script.google.com/macros/s/AKfycbzisAEGsfPmKqHwgph6TupyaFyroPKiMZuUq4xay6MDkZX8DBp6StmgB1qIyO2V1a3U/exec |
+| GASプロジェクト（名前は「無題のプロジェクト」のまま） | https://script.google.com/home/projects/1t_Mgz0AiDIAv43YD7uRVeEs_W1tTXytZFdI12dJ4pvpsrOF6kdzpMAgL/edit |
+| GitHubリポジトリ | https://github.com/YusukeUmehara/andy-ap-kekki-survey |
+
+- 動作確認：AP・専属それぞれテスト送信 → スプレッドシートに記録を確認 → テスト行は削除済み
+
 AP決起集会（2026-11-02）のセミナー後アンケート。GitHub Pages で公開し、回答は Google Apps Script 経由でスプレッドシートに貯まる。
 
 - `index.html` … アンケート本体（名前 → AP／専属で分岐 → 送信 → それぞれのメッセージ）
