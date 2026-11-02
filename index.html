@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E60012">
+<meta name="robots" content="noindex">
+<title>11月 AP決起アンケート｜＆Y</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E60012; --deep:#B8000E; --hot:#FF4B3A; --wash:#FFEEEC; --paper:#FFF9F7;
+  --ink:#2F2422; --mute:#756966; --faint:#9C8F8B; --line:#EADFDC; --gold:#F5A70A;
+  --ok:#1F9D63; --r:18px; --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+img{display:block;max-width:100%;height:auto}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif;line-height:1.7;
+  font-feature-settings:"palt" 1;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(520px 320px at 110% -5%,rgba(230,0,18,.10),transparent 65%),
+    radial-gradient(420px 300px at -15% 105%,rgba(245,167,10,.12),transparent 65%)}
+button,input,textarea,select{font:inherit;color:inherit}
+.round{font-family:"M PLUS Rounded 1c","Noto Sans JP",sans-serif}
+.wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 16px 96px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,249,247,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:640px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.logo{font-weight:900;font-size:15px;color:var(--red);letter-spacing:.02em}
+.logo small{font-weight:700;color:var(--mute);font-size:12px;margin-left:6px}
+.dots{margin-left:auto;display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:all .4s var(--ease)}
+.dots i.on{background:var(--red);width:22px;border-radius:6px}
+.testmode{max-width:640px;margin:10px auto 0;padding:0 16px}
+.testmode div{border:1.5px dashed var(--red);color:var(--deep);background:#fff;border-radius:12px;padding:8px 12px;font-size:12px;font-weight:700}
+
+/* screens */
+.screen{display:none}
+.screen.on{display:block;animation:in .5s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{position:relative;margin-top:18px;background:linear-gradient(150deg,var(--red),var(--deep));color:#fff;border-radius:26px;
+  padding:26px 22px 24px;overflow:hidden;box-shadow:0 14px 34px rgba(184,0,14,.22)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;opacity:.85}
+.hero h1{max-width:66%;font-size:clamp(26px,7.4vw,38px);font-weight:800;line-height:1.25;margin:8px 0 12px;position:relative;z-index:1}
+.hero .theme{display:inline-block;background:#fff;color:var(--red);font-weight:800;border-radius:999px;padding:5px 14px;font-size:13px;position:relative;z-index:1}
+.hero p{font-size:14px;margin-top:14px;opacity:.92;max-width:62%;position:relative;z-index:1}
+.hero .andy{position:absolute;right:4px;bottom:-4px;width:min(34%,165px);z-index:1;animation:float 3.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+
+/* bubble */
+.talk{display:flex;align-items:flex-end;gap:10px;margin:22px 0 4px}
+.talk img{width:58px;flex:none;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.bubble{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px 18px 18px 6px;padding:10px 14px;font-size:14px;font-weight:700;box-shadow:0 4px 14px rgba(47,36,34,.05)}
+
+/* cards & fields */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;margin-top:14px;box-shadow:0 6px 18px rgba(47,36,34,.04);transition:border-color .2s,box-shadow .2s}
+.card.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(230,0,18,.10);animation:shake .4s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.q{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.q .no{flex:none;width:30px;height:30px;border-radius:10px;background:var(--wash);color:var(--red);font-weight:800;display:grid;place-items:center;font-size:14px}
+.q label,.q .lbl{font-weight:800;font-size:16.5px;line-height:1.45;padding-top:2px}
+.req{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:#fff;background:var(--red);border-radius:6px;padding:1px 6px;vertical-align:2px}
+.opt{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:var(--mute);background:#F3EEED;border-radius:6px;padding:1px 6px;vertical-align:2px}
+.help{font-size:13.5px;color:var(--mute);margin:-4px 0 10px;white-space:pre-line}
+.help b{color:var(--red)}
+.field{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:14px;padding:13px 14px;font-size:16px;outline:none;transition:border-color .2s,background .2s,box-shadow .2s}
+.field:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(230,0,18,.08)}
+textarea.field{min-height:130px;resize:vertical;line-height:1.7}
+.count{text-align:right;font-size:12px;color:var(--faint);margin-top:4px}
+.tagfield{display:flex;align-items:stretch}
+.tag{flex:none;display:grid;place-items:center;padding:0 12px;border-radius:14px 0 0 14px;background:var(--red);color:#fff;font-weight:900;font-size:14px;letter-spacing:.04em}
+.tag.k2{background:var(--ink)}
+.tagfield .field{border-radius:0 14px 14px 0;border-left:none}
+.sel{position:relative}
+.sel::after{content:"";position:absolute;right:16px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--red);border-bottom:2.5px solid var(--red);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.sel select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px}
+.msg{display:none;color:var(--red);font-size:12.5px;font-weight:700;margin-top:8px}
+.card.err .msg{display:block}
+
+/* role cards */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.role{position:relative;border:2px solid var(--line);background:var(--paper);border-radius:18px;padding:16px 12px 14px;text-align:center;cursor:pointer;transition:all .25s var(--ease)}
+.role:hover{transform:translateY(-2px)}
+.role img{height:84px;width:auto;margin:0 auto 8px}
+.role b{display:block;font-size:15.5px;font-weight:800;white-space:nowrap}
+.role span{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.role.on{border-color:var(--red);background:var(--wash);box-shadow:0 8px 20px rgba(230,0,18,.14)}
+.role.on::after{content:"✓";position:absolute;top:8px;right:10px;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;font-size:14px;font-weight:900;display:grid;place-items:center;animation:pop .3s var(--ease)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+/* buttons */
+.actions{margin-top:22px;display:flex;gap:10px;align-items:center}
+.btn{flex:1;border:none;cursor:pointer;border-radius:16px;padding:16px 18px;font-size:17px;font-weight:800;background:var(--red);color:#fff;
+  box-shadow:0 8px 0 var(--deep),0 12px 22px rgba(184,0,14,.22);transition:transform .12s,box-shadow .12s,opacity .2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn:active{transform:translateY(6px);box-shadow:0 2px 0 var(--deep),0 4px 10px rgba(184,0,14,.2)}
+.btn[disabled]{opacity:.65;cursor:default}
+.back{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:15px 16px;font-weight:700;font-size:14px;color:var(--mute);cursor:pointer}
+.spin{width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sending{text-align:center;font-size:12.5px;color:var(--mute);margin-top:12px}
+
+/* section head */
+.head{margin-top:20px;display:flex;align-items:center;gap:14px}
+.head img{width:74px;flex:none}
+.head .chip{display:inline-block;font-size:12px;font-weight:800;color:var(--red);background:var(--wash);border-radius:999px;padding:3px 12px}
+.head h2{font-size:24px;font-weight:800;line-height:1.3;margin-top:4px}
+.motto{margin-top:12px;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;font-size:13.5px;font-weight:700;line-height:1.6}
+.motto em{font-style:normal;color:var(--gold)}
+
+/* thanks */
+.thanks-top{text-align:center;padding-top:26px}
+.thanks-top img{width:min(52%,220px);animation:float 3s ease-in-out infinite}
+.thanks-top h2{font-size:28px;font-weight:800;color:var(--red);margin-top:8px}
+.thanks-top p{color:var(--mute);font-size:14px;margin-top:4px}
+.letter{position:relative;background:#fff;border-radius:22px;padding:26px 20px 22px;margin-top:20px;border:1px solid var(--line);box-shadow:0 14px 30px rgba(47,36,34,.07)}
+.letter::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;border-radius:22px 22px 0 0;background:repeating-linear-gradient(90deg,var(--red) 0 22px,#fff 22px 30px,var(--gold) 30px 52px,#fff 52px 60px)}
+.letter .from{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.letter .from i{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-style:normal;font-weight:900;display:grid;place-items:center;font-size:13px}
+.letter .from b{font-size:15px}
+.letter .from span{display:block;font-size:12px;color:var(--mute);font-weight:500}
+.letter .body{font-size:15.5px;line-height:1.95;white-space:pre-line}
+.letter .body strong{color:var(--red)}
+.sign{text-align:right;font-weight:800;margin-top:12px}
+.done-note{text-align:center;font-size:12.5px;color:var(--faint);margin-top:18px}
+canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.foot{text-align:center;color:var(--faint);font-size:11px;margin-top:36px}
+@media (min-width:600px){.hero{padding:32px 30px 30px}.hero p{font-size:15px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="logo">&amp;Y<small>AP決起 2026.11</small></div>
+  <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+</div></header>
+<div class="testmode" id="testmode" hidden><div>テストモード：送信先が未設定のため、送信しても回答は保存されません。</div></div>
+
+<main class="wrap">
+
+<!-- ===== START ===== -->
+<section class="screen on" id="s-start">
+  <div class="hero">
+    <div class="kicker">＆Y AP決起集会　アンケート</div>
+    <h1 class="round">今日の宣言を、<br>カタチに残そう！</h1>
+    <span class="theme">センターピンは、1本でいい。</span>
+    <p>1分で終わります。<br>回答はチームごとに<br>まとめて届けます！</p>
+    <img class="andy" src="assets/andy-salute.webp" alt="アンディくん" width="355" height="560">
+  </div>
+
+  <div class="talk">
+    <img src="assets/andy-map.webp" alt="" width="441" height="560">
+    <div class="bubble">セミナーおつかれさま！<br>まずは名前と立場を教えてね〜！</div>
+  </div>
+
+  <div class="card" id="c-name">
+    <div class="q"><span class="no">1</span><label for="name">お名前<span class="req">必須</span></label></div>
+    <input class="field" id="name" autocomplete="name" placeholder="例：山田 花子" maxlength="40">
+    <div class="msg">お名前を入れてください</div>
+  </div>
+
+  <div class="card" id="c-role">
+    <div class="q"><span class="no">2</span><span class="lbl">私は…<span class="req">必須</span></span></div>
+    <div class="roles" role="radiogroup" aria-label="立場">
+      <button type="button" class="role" data-role="AP" role="radio" aria-checked="false">
+        <img src="assets/andy-telescope.webp" alt="" width="499" height="560">
+        <b>APです</b><span>アポインター</span>
+      </button>
+      <button type="button" class="role" data-role="専属" role="radio" aria-checked="false">
+        <img src="assets/andy-salute.webp" alt="" width="355" height="560">
+        <b>専属メンバーです</b><span>チームリーダー</span>
+      </button>
+    </div>
+    <div class="msg">どちらかを選んでください</div>
+  </div>
+
+  <div class="actions"><button class="btn" id="go">次へすすむ <span aria-hidden="true">→</span></button></div>
+</section>
+
+<!-- ===== AP ===== -->
+<section class="screen" id="s-ap">
+  <div class="head">
+    <img src="assets/andy-telescope.webp" alt="" width="499" height="560">
+    <div><span class="chip">APのみなさんへ</span><h2 class="round">今月のセンターピンを<br>教えてください！</h2></div>
+  </div>
+
+  <div class="card" id="c-ap-team">
+    <div class="q"><span class="no">1</span><label for="ap-team">チーム名<span class="req">必須</span></label></div>
+    <div class="sel"><select class="field" id="ap-team"><option value="">チームを選んでください</option></select></div>
+    <div class="msg">チームを選んでください</div>
+  </div>
+
+  <div class="card" id="c-kpi">
+    <div class="q"><span class="no">2</span><label for="kpi">センターピンのKPI<span class="req">必須</span></label></div>
+    <div class="tagfield"><span class="tag">KPI</span><input class="field" id="kpi" placeholder="例：DM獲得〇件" maxlength="100"></div>
+    <div class="msg">KPIを書いてください</div>
+  </div>
+
+  <div class="card" id="c-kdi">
+    <div class="q"><span class="no">3</span><label for="kdi">センターピンのKDI<span class="req">必須</span></label></div>
+    <div class="tagfield"><span class="tag k2">KDI</span><input class="field" id="kdi" placeholder="例：動画投稿〇件" maxlength="100"></div>
+    <div class="msg">KDIを書いてください</div>
+  </div>
+
+  <div class="card" id="c-hope">
+    <div class="q"><span class="no">4</span><label for="hope">今月はどんな1ヶ月にしますか？<span class="req">必須</span></label></div>
+    <p class="help">その想いを自由に書いてください！
+<b>アップに届けます！</b></p>
+    <textarea class="field" id="hope" maxlength="1000" placeholder="例：今月こそ過去最高を出して、アップと一緒に喜びたい！"></textarea>
+    <div class="count"><span data-count="hope">0</span> / 1000</div>
+    <div class="msg">想いを書いてください</div>
+  </div>
+
+  <div class="card" id="c-req">
+    <div class="q"><span class="no">5</span><label for="req">アップへのお願いごと<span class="opt">あれば</span></label></div>
+    <textarea class="field" id="req" maxlength="1000" placeholder="例：週1回、DMの添削をしてほしいです"></textarea>
+    <div class="count"><span data-count="req">0</span> / 1000</div>
+  </div>
+
+  <div class="actions">
+    <button class="back" data-back>← 戻る</button>
+    <button class="btn" data-submit="AP">送信する <span aria-hidden="true">🚀</span></button>
+  </div>
+  <p class="sending" hidden>送信中です。数秒お待ちください。</p>
+</section>
+
+<!-- ===== 専属 ===== -->
+<section class="screen" id="s-lead">
+  <div class="head">
+    <img src="assets/andy-salute.webp" alt="" width="355" height="560">
+    <div><span class="chip">専属メンバーのみなさんへ</span><h2 class="round">チームへの宣言を<br>残しましょう！</h2></div>
+  </div>
+
+  <div class="card" id="c-lead-team">
+    <div class="q"><span class="no">1</span><label for="lead-team">どのチームのリーダーですか？<span class="req">必須</span></label></div>
+    <div class="sel"><select class="field" id="lead-team"><option value="">チームを選んでください</option></select></div>
+    <div class="msg">チームを選んでください</div>
+  </div>
+
+  <div class="card" id="c-decl">
+    <div class="q"><span class="no">2</span><label for="decl">チームのための宣言は何でしたか？<span class="req">必須</span></label></div>
+    <p class="help">KPIでもKDIでも！なんでもOK！
+今日の場で宣言したものをそのまま書いてください。</p>
+    <textarea class="field" id="decl" maxlength="1000" placeholder="例：毎日、チーム全員のDMに目を通す"></textarea>
+    <div class="count"><span data-count="decl">0</span> / 1000</div>
+    <div class="msg">宣言を書いてください</div>
+    <div class="motto">※今月のテーマの<em>有言実行⇔言行一致</em><br>APに背中見せていきましょう！</div>
+  </div>
+
+  <div class="actions">
+    <button class="back" data-back>← 戻る</button>
+    <button class="btn" data-submit="専属">送信する <span aria-hidden="true">🔥</span></button>
+  </div>
+  <p class="sending" hidden>送信中です。数秒お待ちください。</p>
+</section>
+
+<!-- ===== THANKS AP ===== -->
+<section class="screen" id="s-done-ap">
+  <div class="thanks-top">
+    <img src="assets/andy-telescope.webp" alt="アンディくん" width="499" height="560">
+    <h2 class="round">送信完了！</h2>
+    <p>あなたの宣言、しっかり受け取りました！</p>
+  </div>
+  <article class="letter">
+    <div class="from"><i>COO</i><div><b>梅原より</b><span>APのみなさんへ</span></div></div>
+    <div class="body">COO梅原です！
+いつもAP活動ありがとうございます！
+みなさんのいつもの頑張りで専属メンバー一同、毎日走ることができています！
+毎度、本当に感謝です！！！
+
+実は、先日の＆Yの専属決起集会で<strong>「年内走り切るために、今月何としてもあげましょう」</strong>と全員で宣言しました！
+
+みなさんAPは専属メンバーにとって<strong>宝物</strong>です。
+共に上がりたいからこそ、時間も労力も使ってみなさんの実績を上げるために無我夢中で走ってます🤝
+だからこそ、そんな想いに応えるのもみなさん次第！！
+
+＆Yは1人1人の夢や目標を叶える場所！
+だからこそ、今月、全員が<strong>過去最高の実績</strong>で終えれるように、専属一同全力でサポートしていきます！
+引き続きよろしくお願いします🤝✨</div>
+  </article>
+  <p class="done-note">このページは閉じて大丈夫です。</p>
+</section>
+
+<!-- ===== THANKS 専属 ===== -->
+<section class="screen" id="s-done-lead">
+  <div class="thanks-top">
+    <img src="assets/andy-salute.webp" alt="アンディくん" width="355" height="560">
+    <h2 class="round">送信完了！</h2>
+    <p>有言実行、いきましょう！</p>
+  </div>
+  <article class="letter">
+    <div class="from"><i>COO</i><div><b>最後に、COOからのメッセージ</b><span>専属メンバーのみなさんへ</span></div></div>
+    <div class="body">APが回答した内容はまとめて、<strong style="white-space:nowrap">チームごとのレポート</strong>にしてお渡しします。
+1ヶ月を通して、APマネジメントやチームミーティングの議題や話題に活用してください！
+
+今月、みんなの大切なAPとともに何がなんでもあげましょう🤝</div>
+    <div class="sign">COO梅原</div>
+  </article>
+  <p class="done-note">このページは閉じて大丈夫です。</p>
+</section>
+
+<p class="foot">© ＆Y</p>
+</main>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script src="config.js"></script>
+<script>
+(() => {
+  "use strict";
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const endpoint = ((window.SURVEY_CONFIG || {}).endpoint || "").trim();
+  if (!endpoint) $("#testmode").hidden = false;
+
+  const AP_TEAMS = ["チームうめ","チームあかり","チームれお","チームけいた","チームこうたろう","チームはやと","チームあゆう","チームみき"];
+  const LEAD_TEAMS = AP_TEAMS.concat(["チームまなと"]);
+  const fill = (sel, list) => list.forEach((t) => { const o = document.createElement("option"); o.value = o.textContent = t; sel.appendChild(o); });
+  fill($("#ap-team"), AP_TEAMS);
+  fill($("#lead-team"), LEAD_TEAMS);
+
+  const KEY = "andy-ap-kekki-2026-11";
+  let role = "";
+
+  // ---- screens / dots ----
+  const show = (id, dot) => {
+    $$(".screen").forEach((s) => s.classList.toggle("on", s.id === id));
+    $$(".dots i").forEach((d, i) => d.classList.toggle("on", i === dot));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // ---- role ----
+  $$(".role").forEach((b) => b.addEventListener("click", () => {
+    role = b.dataset.role;
+    $$(".role").forEach((x) => { const on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); });
+    $("#c-role").classList.remove("err");
+    save();
+  }));
+
+  // ---- counters ----
+  $$("[data-count]").forEach((c) => {
+    const f = document.getElementById(c.dataset.count);
+    const up = () => { c.textContent = f.value.length; };
+    f.addEventListener("input", up); up();
+  });
+
+  // ---- validation ----
+  const need = (cardId, ok) => { const c = document.getElementById(cardId); c.classList.toggle("err", !ok); return ok; };
+  $$(".field").forEach((f) => f.addEventListener("input", () => { const c = f.closest(".card"); if (c && f.value.trim()) c.classList.remove("err"); save(); }));
+  $$("select.field").forEach((f) => f.addEventListener("change", () => { const c = f.closest(".card"); if (c && f.value) c.classList.remove("err"); save(); }));
+  const firstErr = () => { const e = document.querySelector(".screen.on .card.err"); if (e) e.scrollIntoView({ behavior: "smooth", block: "center" }); };
+
+  $("#go").addEventListener("click", () => {
+    const a = need("c-name", $("#name").value.trim() !== "");
+    const b = need("c-role", role !== "");
+    if (!(a && b)) return firstErr();
+    if (role === "AP") show("s-ap", 1); else show("s-lead", 1);
+  });
+  $$("[data-back]").forEach((b) => b.addEventListener("click", () => show("s-start", 0)));
+
+  // ---- draft save (per device) ----
+  const FIELDS = ["name","ap-team","kpi","kdi","hope","req","lead-team","decl"];
+  function save() {
+    try { const d = { role }; FIELDS.forEach((k) => d[k] = document.getElementById(k).value); localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+  }
+  (function restore() {
+    let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!d) return;
+    FIELDS.forEach((k) => { if (d[k]) document.getElementById(k).value = d[k]; });
+    $$("[data-count]").forEach((c) => c.textContent = document.getElementById(c.dataset.count).value.length);
+    if (d.role) { const b = document.querySelector(`.role[data-role="${d.role}"]`); if (b) b.click(); }
+  })();
+
+  function rid() {
+    try {
+      let id = localStorage.getItem(KEY + "-id");
+      if (!id) { id = crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2); localStorage.setItem(KEY + "-id", id); }
+      return id;
+    } catch (e) { return Date.now() + "-" + Math.random().toString(36).slice(2); }
+  }
+
+  // ---- submit ----
+  $$("[data-submit]").forEach((btn) => btn.addEventListener("click", async () => {
+    const r = btn.dataset.submit;
+    let ok;
+    if (r === "AP") {
+      ok = [need("c-ap-team", $("#ap-team").value !== ""), need("c-kpi", $("#kpi").value.trim() !== ""),
+            need("c-kdi", $("#kdi").value.trim() !== ""), need("c-hope", $("#hope").value.trim() !== "")].every(Boolean);
+    } else {
+      ok = [need("c-lead-team", $("#lead-team").value !== ""), need("c-decl", $("#decl").value.trim() !== "")].every(Boolean);
+    }
+    if (!ok) return firstErr();
+
+    const payload = r === "AP"
+      ? { role: "AP", name: $("#name").value.trim(), team: $("#ap-team").value, kpi: $("#kpi").value.trim(), kdi: $("#kdi").value.trim(), hope: $("#hope").value.trim(), request: $("#req").value.trim() }
+      : { role: "専属", name: $("#name").value.trim(), team: $("#lead-team").value, declaration: $("#decl").value.trim() };
+    payload.id = rid() + "-" + r;
+    payload.ua = navigator.userAgent.slice(0, 200);
+
+    const sec = btn.closest(".screen");
+    const note = sec.querySelector(".sending");
+    const label = btn.innerHTML;
+    btn.disabled = true; sec.querySelector("[data-back]").disabled = true;
+    btn.innerHTML = '<span class="spin"></span>送信中…'; note.hidden = false;
+    try {
+      if (endpoint) {
+        const body = JSON.stringify(payload);
+        const send = () => fetch(endpoint, { method: "POST", mode: "no-cors", credentials: "omit", headers: { "Content-Type": "text/plain;charset=utf-8" }, body });
+        try { await send(); } catch (e) { await new Promise((ok) => setTimeout(ok, 1200)); await send(); }
+      } else {
+        await new Promise((ok) => setTimeout(ok, 700));
+      }
+      try { localStorage.removeItem(KEY); localStorage.removeItem(KEY + "-id"); } catch (e) {}
+      show(r === "AP" ? "s-done-ap" : "s-done-lead", 2);
+      confetti();
+    } catch (e) {
+      alert("送信できませんでした。電波の良いところで、もう一度「送信する」を押してください。");
+      btn.disabled = false; sec.querySelector("[data-back]").disabled = false; btn.innerHTML = label; note.hidden = true;
+    }
+  }));
+
+  // ---- confetti ----
+  function confetti() {
+    const cv = $("#confetti"); const cx = cv.getContext("2d");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const dpr = window.devicePixelRatio || 1;
+    cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.scale(dpr, dpr);
+    const cols = ["#E60012","#F5A70A","#FF4B3A","#FFFFFF","#B8000E"];
+    const ps = Array.from({ length: 140 }, () => ({
+      x: innerWidth / 2 + (Math.random() - .5) * 120, y: innerHeight * .35,
+      vx: (Math.random() - .5) * 13, vy: -Math.random() * 13 - 4, s: 5 + Math.random() * 7,
+      r: Math.random() * 6, vr: (Math.random() - .5) * .3, c: cols[(Math.random() * cols.length) | 0], t: 0 }));
+    let f = 0;
+    (function tick() {
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      ps.forEach((p) => { p.vy += .32; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+        cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); cx.restore(); });
+      if (++f < 200) requestAnimationFrame(tick); else cx.clearRect(0, 0, innerWidth, innerHeight);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
